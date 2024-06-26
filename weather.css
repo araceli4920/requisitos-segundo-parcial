@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300&family=Epilogue:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@700&display=swap');
+
+:root {
+    --bg-color1: #212529;
+    --bg-color2: #2a2b2d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+}
+
+body{
+    min-height: 100vh;
+    background-color: var(--bg-color1);
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    padding: 0 15px;
+}
+
+.header{
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-color1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 15px 0 ;
+}
+
+#city_input{
+    background-color: var(--bg-color2);
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 25px;
+    color: #fff;
+    &focus{
+        outline: none;
+    }
+}
+
+#searchBtn{
+    border: none;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 25px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#locationBtn{
+    border: none;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 25px;
+    background-color: #ea6e4b;
+    cursor: pointer;
+}
