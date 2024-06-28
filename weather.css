@@ -59,3 +59,58 @@ body{
     background-color: #ea6e4b;
     cursor: pointer;
 }
+
+.card{
+    background-color: var(--bg-color2);
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    & p{
+        font-size: 14px;
+        color: #999;
+    }
+    & h2{
+        font-size: 32px;
+        font-weight: 500;
+    }
+}
+
+.weather-data{
+     display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.weather-left{
+    grid-column: span 1;
+}
+
+.current-weather{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;        
+    & h2{
+      margin: 7px 0;
+      & p{
+         color: #fff;
+        }
+    }
+}
+
+.card-footer{
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.forecast-item{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    margin-bottom: 15px;
+}
+
+.icon-wrapper{
+    display: flex;
+    align-items: center;
+    
+}
