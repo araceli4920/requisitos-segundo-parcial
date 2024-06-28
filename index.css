@@ -41,8 +41,11 @@ h1{
 .card img {
     width: 100%;
     display: block;
-    height: 400px;
+    height: 286px;
     object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: 2px 0px 5px #ccc;
 }
 
 .card-detail {
@@ -54,4 +57,5 @@ h1{
 .header{
     background-color: #1e1e1e;
     color: #fff;
+    
 }
