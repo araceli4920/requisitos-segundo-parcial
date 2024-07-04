@@ -8,23 +8,13 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
-h1 {
-    background: linear-gradient(to right, rgb(11, 248, 2), rgb(4, 0, 255));
-    margin: 0px;
-    text-align: center;
-    text-transform: uppercase;
-    color: aliceblue;
-    padding: 5px;
-    box-shadow: 0px 2px 5px gray;
-}
-
 .contenedor {
     width: 60%;
     max-width: 1200px;
     margin: 0 auto;
     background-color: rgb(255, 255, 255);
     text-align: center;
-    margin-top: 50px;
+    margin-top: -100px;
     padding: 20px;
     box-shadow: 2px 2px 7px rgb(187, 198, 214);
     border-radius: 10px;
@@ -34,11 +24,6 @@ h1 {
     .contenedor {
         width: 90%;
     }
-}
-
-h2,
-p {
-    color: rgb(17, 22, 37);
 }
 
 h2 span,
@@ -58,6 +43,8 @@ img {
 }
 
 button {
+    margin-top: 70px;
+    margin-left: -475px;
     border: none;
     background: linear-gradient(to right, rgb(14, 67, 174), rgb(7, 94, 224));
     color: #fff;
@@ -69,4 +56,79 @@ button {
 
 button:hover {
     transform: scale(1.1);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    display: flex;
+    justify-content: center;
+    background-color: #030404;
+    padding: 25px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.sidebar-item {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s;
+}
+
+.sidebar-item i {
+    margin-right: 5px;
+}
+
+.sidebar-item:hover {
+    color: #f0f0f0;
+}
+
+.values_list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    float: left;
+}
+
+.horizontal_center {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+ul {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
+
+::selection {
+    color: #050000;
+    background-color: #83ba43;
+}
+
+.values_list li {
+    cursor: pointer;
+    display: block;
+    width: 40px;
+    height: 48px;
+    float: left;
+    margin: 20px;
+    background-image: url(../img/card_icons.png);
+    background-color: brown;
+    background-size: 378px;
+    transition: all .25s ease-out;
 }

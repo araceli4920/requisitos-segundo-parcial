@@ -9,20 +9,72 @@
 <body>
     <h1>Usuarios Random</h1>
 
+    <div class="sidebar">
+        <a href="#home" class="sidebar-item">
+            <i class="fas fa-home"></i> <p>Home</p>
+        </a>
+        <a href="#user-photos" class="sidebar-item">
+            <i class="fas fa-images"></i> <p>User Photos</p>
+        </a>
+        <a href="#documentation" class="sidebar-item">
+            <i class="fas fa-book"></i> <p>Documentation</p>
+        </a>
+        <a href="#change-log" class="sidebar-item">
+            <i class="fas fa-file-alt"></i> <p>Change Log</p>
+        </a>
+        <a href="#stats-graphs" class="sidebar-item">
+            <i class="fas fa-chart-bar"></i> <p>Stats & Graphs</p>
+        </a>
+        <a href="#donate" class="sidebar-item">
+            <i class="fas fa-donate"></i> <p>Donate</p>
+        </a>
+        <a href="#copyright-notice" class="sidebar-item">
+            <i class="fas fa-copyright"></i> <p>Copyright Notice</p>
+        </a>
+        <a href="#photoshop-extension" class="sidebar-item">
+            <i class="fas fa-puzzle-piece"></i> <p>Photoshop Extension</p>
+        </a>
+    </div>
+    <header style="background-color: rgba(31, 99, 122, 0.85); color: white; text-align: center; padding: 170px;">
+        <h1 style="font-size: 3.5em; margin-top: -2em;">
+            RANDOM USER GENERATOR
+        </h1>
+        <p style="margin-top: 20px;">A free, open-source API for generating random user data. Like Lorem Ipsum, but for people.</p>
+    </header>
+    
     <div class="contenedor">
         <img src="" alt="perfil de usuario" id="foto">
         <h2>Nombre: <span id="nombre"></span></h2>
         <div>
             <p>Correo: <span id="correo"></span></p>
             <p>Telefono: <span id="telefono"></span></p>
-        </div>
+            <ul class="values_list horizontal_center" id="values_list">
+                <li data-title="hi, my name is" data-value="jonathan simmons" 
+                data-label="name"></li>
+        
+                <li data-title="My email address is" data-value="jonathan.simmmons@example.com" 
+                data-label="email"></li>
+        
+                <li data-title="My birthday is" data-value="12/5/1989" 
+                data-label="birthday"></li>
+        
+                <li data-title="My address is" data-value="6234 Locust Rd" 
+                data-label="location"></li>
+        
+                <li data-title="My phone number is" data-value="(502) 766-0739" 
+                data-label="phone"></li>
+                
+                <li data-title="My password is" data-value="monsters" 
+                data-label="pass" data-caps="false"></li>
+            </ul>
+            <div class="boton">
+                <button id="boton">Generar usuario</button>
+            </div>
+        
+            <script src="proyecto.js"></script>
+        </div>   
     </div>
-
-    <div class="boton">
-        <button id="boton">Generar usuario</button>
-    </div>
-
-    <script src="proyecto.js"></script>
+    
 
 </body>
 </html>
