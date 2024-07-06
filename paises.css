@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*background-image: url("/img.paises/bandera2.jpg");  /*Esto puede cambiarse solo es un fondo para mejor visualización de las card*/
+    background-image: url("/img.paises/bandera2.jpg");  /*Esto puede cambiarse solo es un fondo para mejor visualización de las card*/
     cursor: pointer;
     
 }
