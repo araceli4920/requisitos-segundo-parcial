@@ -4,77 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Random User Generator</title>
 </head>
 <body>
-    <h1>Usuarios Random</h1>
-
     <div class="sidebar">
         <a href="#home" class="sidebar-item">
-            <i class="fas fa-home"></i> <p>Home</p>
+            <i class="fas fa-home" style="margin-left: 13px;"></i> <p>Home</p>
         </a>
         <a href="#user-photos" class="sidebar-item">
-            <i class="fas fa-images"></i> <p>User Photos</p>
+            <i class="fas fa-images" style="margin-left: 30px;"></i> <p>User Photos</p>
         </a>
         <a href="#documentation" class="sidebar-item">
-            <i class="fas fa-book"></i> <p>Documentation</p>
+            <i class="fas fa-book" style="margin-left: 49px;"></i> <p>Documentation</p>
         </a>
         <a href="#change-log" class="sidebar-item">
-            <i class="fas fa-file-alt"></i> <p>Change Log</p>
+            <i class="fas fa-file-alt" style="margin-left: 39px;"></i> <p>Change Log</p>
         </a>
         <a href="#stats-graphs" class="sidebar-item">
-            <i class="fas fa-chart-bar"></i> <p>Stats & Graphs</p>
+            <i class="fas fa-chart-bar" style="margin-left: 43px;"></i> <p>Stats & Graphs</p>
         </a>
         <a href="#donate" class="sidebar-item">
-            <i class="fas fa-donate"></i> <p>Donate</p>
+            <i class="fas fa-donate" style="margin-left: 17px;"></i> <p>Donate</p>
         </a>
         <a href="#copyright-notice" class="sidebar-item">
-            <i class="fas fa-copyright"></i> <p>Copyright Notice</p>
+            <i class="fas fa-copyright" style="margin-left: 47px;"></i> <p>Copyright Notice</p>
         </a>
         <a href="#photoshop-extension" class="sidebar-item">
-            <i class="fas fa-puzzle-piece"></i> <p>Photoshop Extension</p>
+            <i class="fas fa-puzzle-piece" style="margin-left: 64px;"></i> <p>Photoshop Extension</p>
         </a>
     </div>
-    <header style="background-color: rgba(31, 99, 122, 0.85); color: white; text-align: center; padding: 170px;">
-        <h1 style="font-size: 3.5em; margin-top: -2em;">
+    <header>
+        <h1>
             RANDOM USER GENERATOR
         </h1>
-        <p style="margin-top: 20px;">A free, open-source API for generating random user data. Like Lorem Ipsum, but for people.</p>
     </header>
-    
     <div class="contenedor">
         <img src="" alt="perfil de usuario" id="foto">
-        <h2>Nombre: <span id="nombre"></span></h2>
+        <h2><i class="fas fa-user"></i> Nombre: <span id="nombre"></span></h2>
         <div>
-            <p>Correo: <span id="correo"></span></p>
-            <p>Telefono: <span id="telefono"></span></p>
-            <ul class="values_list horizontal_center" id="values_list">
-                <li data-title="hi, my name is" data-value="jonathan simmons" 
-                data-label="name"></li>
-        
-                <li data-title="My email address is" data-value="jonathan.simmmons@example.com" 
-                data-label="email"></li>
-        
-                <li data-title="My birthday is" data-value="12/5/1989" 
-                data-label="birthday"></li>
-        
-                <li data-title="My address is" data-value="6234 Locust Rd" 
-                data-label="location"></li>
-        
-                <li data-title="My phone number is" data-value="(502) 766-0739" 
-                data-label="phone"></li>
-                
-                <li data-title="My password is" data-value="monsters" 
-                data-label="pass" data-caps="false"></li>
-            </ul>
+            <p><i class="fas fa-envelope"></i> Correo: <span id="correo"></span></p>
+            <p><i class="fas fa-phone"></i> Teléfono: <span id="telefono"></span></p>
+            <p><i class="fas fa-map-marker-alt"></i> Ubicación: <span id="ubicacion"></span></p>
+            <p><i class="fas fa-globe"></i> Nacionalidad: <span id="nacionalidad"></span></p>
+            <p><i class="fas fa-key"></i> Contraseña: <span id="contrasena"></span></p>
+            <p><i class="fas fa-birthday-cake"></i> Fecha de Nacimiento: <span id="fecha-nacimiento"></span></p>
+            <p><i class="fas fa-calendar-alt"></i> Edad: <span id="edad"></span></p>
+            <p><i class="fas fa-user-circle"></i> Nombre de Usuario: <span id="usuario"></span></p>
+            <p><i class="fas fa-clock"></i> Zona Horaria: <span id="zona-horaria"></span></p>
+            <p><i class="fas fa-map-pin"></i> Coordenadas: Latitud <span id="latitud"></span>, Longitud <span id="longitud"></span></p>
             <div class="boton">
                 <button id="boton">Generar usuario</button>
             </div>
-        
             <script src="proyecto.js"></script>
         </div>   
     </div>
-    
-
 </body>
 </html>
