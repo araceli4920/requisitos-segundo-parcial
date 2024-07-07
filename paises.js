@@ -6,14 +6,21 @@ fetch(url)
     .then(countries => {
         countries.forEach(country => {
             const countryTemplate = `
-                <div class="country">
+            <div class="country">
+                <div class="img">
                     <img src="${country.flags.png}" alt="Bandera de ${country.name.common}">
+                    <div class="tit">
                     <h2>${country.name.common}</h2>
-                    <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : 'N/A'}</p>
-                    <p><strong>Región:</strong> ${country.region}</p>
-                    <p><strong>Subregión:</strong> ${country.subregion}</p>
-                    <p><strong>Población:</strong> ${country.population.toLocaleString()}</p>
                 </div>
+            </div>
+                <div class="card">
+                    <hr>
+                    <p><i class="fa-solid fa-landmark"></i><strong>Capital:</strong> ${country.capital ? country.capital[0] : 'N/A'}</p>
+                    <p><i class="fa-solid fa-location-dot"></i><strong>Región:</strong> ${country.region}</p>
+                    <p><strong>Subregión:</strong> ${country.subregion}</p>
+                    <p><i class="fa-solid fa-person"></i><strong>Población:</strong> ${country.population.toLocaleString()}</p>
+                </div>
+            </div>
             `;
             Container.innerHTML += countryTemplate; // Agregar cada tarjeta de país al contenedor
         });
