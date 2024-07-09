@@ -13,6 +13,81 @@ body {
     
 }
 
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 18px;
+}
+.header{
+    background-color: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 15px;
+}
+.header .logo{
+    cursor: pointer;
+}
+
+.header .logo img{
+    height: 60px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.header .nav-links{
+    list-style: none;
+}
+
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 90px;
+
+}
+
+.header .nav-links li:hover{
+    transform: scale(1.5);
+}
+
+.header .nav-links a{
+    font-size: 20px;
+    color: #eaeaea;
+    text-decoration: none;
+}
+
+.header .nav-links li a:hover{
+    color: #121212;
+}
+
+.header .btn button{
+    font-weight: 700;
+    color: black;
+    padding: 9px 25px;
+    background: rgb(255, 255, 255) ;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.header .btn button:hover{
+    background-color: aliceblue;
+    color: aqua;
+    transform: scale(1.1);
+
+}
+
+
+
+nav{
+    padding: 10px 0px;
+}
+
+
+
 h1 {
     color:  #0c0c0c;
 }
@@ -103,7 +178,6 @@ hr{
     transition-delay: 0.2s;
 }
 .card p i{
-
-    margin-right:5px;
+ margin-right:5px;
     
 }
