@@ -9,15 +9,31 @@ body {
 }
 
 .contenedor {
-    width: 60%;
+    width: 75%;
     max-width: 1200px;
     margin: 0 auto;
     background-color: rgb(255, 255, 255);
-    text-align: center;
-    margin-top: -13em;
+    margin-top: -11em;
     padding: 20px;
     box-shadow: 2px 2px 7px rgb(187, 198, 214);
     border-radius: 10px;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centra todo el contenido verticalmente */
+}
+
+.informacion {
+    display: flex;
+    justify-content: center;
+    /* Centra horizontalmente las columnas */
+}
+
+.columna {
+    margin: 0 25px; /* Espacio entre las columnas */
 }
 
 h2 span,
@@ -27,7 +43,7 @@ p span {
 
 img {
     border-radius: 50%;
-    width: 100px;
+    width: 120px;
 }
 
 .boton {
