@@ -4,7 +4,7 @@ const nombre = document.querySelector('#nombre');
 const correo = document.querySelector('#correo');
 const telefono = document.querySelector('#telefono');
 const ubicacion = document.querySelector('#ubicacion');
-const nacionalidad = document.querySelector('#nacionalidad');
+const linkNacionalidad = document.querySelector('#linkNacionalidad');
 const contrasena = document.querySelector('#contrasena');
 const fechaNacimiento = document.querySelector('#fecha-nacimiento');
 const edad = document.querySelector('#edad');
@@ -12,6 +12,18 @@ const usuario = document.querySelector('#usuario');
 const zonaHoraria = document.querySelector('#zona-horaria');
 const latitud = document.querySelector('#latitud');
 const longitud = document.querySelector('#longitud');
+
+// Función para manejar el clic en el enlace de Nacionalidad
+const handleNacionalidadClick = () => {
+    const nat = nacionalidad.textContent.toLowerCase(); // Obtener la nacionalidad y convertirla a minúsculas
+    const url = `paises.php?nat=${nat}`; // Construir la URL con el parámetro de nacionalidad
+
+    // Redirigir a la página de países con la nacionalidad como parámetro
+    window.location.href = url;
+};
+
+// Agregar evento de clic al enlace de Nacionalidad
+linkNacionalidad.addEventListener('click', handleNacionalidadClick);
 
 const generarContrasena = () => {
     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
