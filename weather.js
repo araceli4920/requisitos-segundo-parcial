@@ -1,8 +1,15 @@
 let cityInput = document.getElementById('city_input'),
 searchBtn = document.getElementById('searchBtn'),
+locationBtn = document.getElementById('locationBtn'),
 api_key = '70df831975a7b2014b2c3937384bc5e0',
 currentWeatherCard = document.querySelectorAll('.weather-left .card')[0],
-fiveDaysForecastCard = document.querySelector('.day-forecast');
+fiveDaysForecastCard = document.querySelector('.day-forecast'),
+sunriseCard = document.querySelectorAll(`.rightcard .card`)[0],
+humidityVal = document.getElementById(`humidityVal`),
+pressureVal = document.getElementById(`pressureVal`),
+visibilityVal = document.getElementById(`visibilityVal`),
+windSpeedVal = document.getElementById(`windSpeedVal`),
+feelsVal = document.getElementById(`feelsVal`);
 
 function getWeatherDetails(name, lat, lon, country, state){
     let FORECAST_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}`,
@@ -50,6 +57,43 @@ function getWeatherDetails(name, lat, lon, country, state){
                 <p><i class="fa-regular fa-location-dot"></i> ${name}, ${country}</p>
             </div>
         `;
+        let {sunrise, sunset} = data.sys,
+        {timezone, visibility} = data,
+        {humidity, pressure, feels_like} = data.main,
+        {speed} = data.wind,
+        sRiseTime = moment.utc(sunrise, `X`).add(timezone, `seconds`).format(`hh:mm A`)
+        sSetTime = moment.utc(sunset, `X`).add(timezone, `seconds`).format(`hh:mm A`)
+        sunriseCard.innerHTML = `
+            <div class="card-head">
+                <h2 class="todayshighlights">Today's Highlights</h2>
+                <p>Sunrise & Sunset</p>
+            </div>
+            <div class="sunries-sunset">
+                <div class="item">
+                    <div class="icon">
+                        <i class="fa light fa-sunrise fa-4x"></i>
+                    </div>
+                    <div>
+                        <p>Sunrise</p>
+                        <p>${sRiseTime}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="icon">
+                        <i class="fa light fa-sunset fa-4x"></i>
+                    </div>
+                    <div>
+                        <p>Sunset</p>
+                        <p>${sSetTime}</p>
+                    </div>
+                </div>
+            </div>    
+        `;
+        humidityVal.innerHTML = `${humidity}%`;
+        pressureVal.innerHTML = `${pressure}hPa`;
+        visibilityVal.innerHTML = `${visibility / 1000}km`;
+        windSpeedVal.innerHTML = `${speed}m/s`;
+        feelsVal.innerHTML = `${(feels_like - 273.15).toFixed(2)}&deg;C`;
     }).catch(() => {
         alert('Failed to fetch current weather');  
     });
@@ -99,4 +143,25 @@ function getCityCoordinates(){
     });
 }
 
+function getUserCoordinates(){
+    navigator.geolocation.getCurrentPosition(position =>{
+        let {latitude, longitude} = position.coords;
+        let REVERSE_GEOCODING_URL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${api_key}`;
+
+        fetch(REVERSE_GEOCODING_URL).then(res => res.json()).then(data =>{
+            let {name, country, state} = data[0];
+            getWeatherDetails(name, latitude, longitude, country, state);
+        }).catch(() =>{
+            alert(`Failed to fetch user coordinates`);
+        })
+    }, error =>{
+        if(error.code === error.PERMISSION_DENIED){
+            alert(`Geolocation permission denied. Please reset location permission to grant access again`);
+        }
+    })
+}
+
 searchBtn.addEventListener('click', getCityCoordinates);
+locationBtn.addEventListener(`click`, getUserCoordinates);
+cityInput.addEventListener(`keyup`, e => e.key === `Enter` && getCityCoordinates());
+window.addEventListener(`load`, getUserCoordinates); 
