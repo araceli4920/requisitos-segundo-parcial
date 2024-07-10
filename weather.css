@@ -68,6 +68,7 @@ body{
     & p{
         font-size: 14px;
         color: #999;
+        margin-bottom: 15px;
     }
     & h2{
         font-size: 32px;
@@ -76,8 +77,8 @@ body{
 }
 
 .weather-data{
-     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
 }
 
@@ -113,4 +114,29 @@ body{
     display: flex;
     align-items: center;
     
+}
+
+.sunries-sunset{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.card-item{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+.todayshighlights{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.p{
+    font-size: 32px;
+    font-weight: 500;
 }
