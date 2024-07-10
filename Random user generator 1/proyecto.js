@@ -81,3 +81,7 @@ const generarUsuario = async () => {
 boton.addEventListener('click', generarUsuario);
 document.addEventListener('DOMContentLoaded', generarUsuario);
 
+
+
+
+
