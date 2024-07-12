@@ -63,6 +63,8 @@ button {
     transition: all ease 400ms;
 }
 
+
+
 .sidebar {
     margin-left: 0px;
     display: flex;
@@ -79,6 +81,10 @@ button {
     color: #fff;
     text-decoration: none;
     margin: -5px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .body, header{

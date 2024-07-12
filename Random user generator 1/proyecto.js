@@ -19,7 +19,7 @@ const handleNacionalidadClick = () => {
     const url = `paises.php?nat=${nat}`; // Construir la URL con el parámetro de nacionalidad
 
     // Redirigir a la página de países con la nacionalidad como parámetro
-    window.location.href = url;
+    window.location.href = url();
 };
 
 // Agregar evento de clic al enlace de Nacionalidad
@@ -48,6 +48,7 @@ const generarUsuario = async () => {
         correo.textContent = usuarioAPI.email;
         telefono.textContent = usuarioAPI.phone;
         ubicacion.textContent = `${usuarioAPI.location.city}, ${usuarioAPI.location.country}`;
+        ubicacionLink.setAttribute("href", "../weather.html?state=" + usuarioAPI.location.city)
         nacionalidad.textContent = usuarioAPI.nat;
         usuario.textContent = usuarioAPI.login.username;
         zonaHoraria.textContent = usuarioAPI.location.timezone.offset;
