@@ -17,17 +17,25 @@
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="" class="active">Home</a></li>
-                <li><a href="">User</a></li>
-                <li><a href="">Weather</a></li>
-                <li><a href="">Country</a>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="paises.html">Main Page</a></li>
+                <li><a href="">Search</a></li>
                 </li>
             </ul>
         </nav>
     </header>
-    <h1>Información de Países</h1>
+    <hr>
+
+    
     <div id="Container"></div>
     <script src="paises.js"></script>
+    <script>
+        hamburger = document.querySelector(".hamburger");
+            hamburger.onclick = function(){
+                navBar =document.querySelector(".nav-bar");
+                navBar.classList.toggle("active");
+            }
+    </script>
     
 </body>
 </html>
