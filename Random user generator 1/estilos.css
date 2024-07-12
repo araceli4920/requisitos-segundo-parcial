@@ -13,7 +13,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     background-color: rgb(255, 255, 255);
-    margin-top: -11em;
+    margin-top: -13em;
     padding: 20px;
     box-shadow: 2px 2px 7px rgb(187, 198, 214);
     border-radius: 10px;
@@ -36,14 +36,19 @@ body {
     margin: 0 25px; /* Espacio entre las columnas */
 }
 
+.columna p {
+    margin-bottom: 12px; /* Ajusta el espacio vertical según tu preferencia */
+}
+
 h2 span,
 p span {
     color: rgb(119, 137, 172);
 }
 
 img {
-    border-radius: 50%;
-    width: 120px;
+    border-radius: 33%;
+    width: 100px;
+    margin-bottom: 13px;
 }
 
 .boton {
