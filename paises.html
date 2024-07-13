@@ -8,9 +8,34 @@
     <link rel="stylesheet" href="paises.css">
 </head>
 <body>
-    <h1>Información de Países</h1>
+    <header>
+        <div class="logo"> Where in the  world?</div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="paises.html">Main Page</a></li>
+                <li><a href="">Search</a></li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+
+    
     <div id="Container"></div>
     <script src="paises.js"></script>
+    <script>
+        hamburger = document.querySelector(".hamburger");
+            hamburger.onclick = function(){
+                navBar =document.querySelector(".nav-bar");
+                navBar.classList.toggle("active");
+            }
+    </script>
     
 </body>
 </html>
