@@ -7,7 +7,7 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #fffffecc;/*Se le hizo el cambio de color a blaco pero con otrasnfunciones cambiara a oscuro*/
-    transition: .3s ease all;/*Esto ayuda aqeu la transicion sea suave*/ 
+    transition: .3s ease all;/*Esto ayuda aque la transicion sea suave*/ 
 }
 *{
     text-decoration: none;
