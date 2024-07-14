@@ -7,10 +7,10 @@ fetch(url)
         countries.forEach(country => {
             const countryTemplate = `
             <div class="country">
-                <div class="img">
+                <div class="img"><a href="paises_individual.html?country=${country.cca2}">
                     <img src="${country.flags.png}" alt="Bandera de ${country.name.common}">
                     <div class="tit">
-                    <h2>${country.name.common}</h2>
+                    <h2>${country.name.common}</h2></a>
                 </div>
             </div>
                     <div class="card">
