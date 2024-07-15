@@ -250,7 +250,7 @@ body.dark .nav-bar.active {
 .input:valid~.label{
     top: -25px;
     font-size: 13px;
-    color: #dfcb13;
+    color: #ffffff;
 }
 .underline{
     position: absolute;
@@ -258,7 +258,7 @@ body.dark .nav-bar.active {
     left: 0;
     height: 2px;
     width: 100%;
-    background-color: #524c03;
+    background-color: #fdfdfb;
     transform: scaleX(0);
     transition: all 0.3s ease;
 }
