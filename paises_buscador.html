@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del País</title>
+    <link rel="stylesheet" href="paises_buscador.css">
+    <link href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logo"> Where in the  world?</div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="paises.html">Main Page</a></li>
+                <li><a href="">Search</a></li>
+                <button class="switch" id="switch">
+                    <span><i class="fa-solid fa-sun"></i></span>
+                    <span><i class="fa-solid fa-moon"></i></span>
+                </button>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+
+<div class="body">
+    <div id="card">
+        <div class="tit"><h1>Information</h1></div>
+            <div id="app"> 
+                <input type="text" id="countryInput" class="input" required >
+                <label class="label">Nombre del país...</label>
+                <div class="underline"></div>
+                </div>
+        <div class="bot">
+            <button id="searchButton">Buscar</button>
+        </div>
+    </div>
+        <div id="Container"></div>
+</div>
+        <div id="Container">
+            <div class="country">
+                <h1></h1>
+                <img src="" alt="Bandera de ">
+                <p><strong>Otros nombres:</strong>...</p>
+                <p><strong>Capital:</strong> ...</p>
+                <p><strong>Continentes:</strong> ...</p>
+                <p><strong>Idiomas:</strong> ...</p>
+                <p><strong>Google Maps:</strong> <a href="">Ver en Google Maps</a></p>
+                <p><strong>OpenStreetMaps:</strong> <a href="">Ver en OpenStreetMaps</a></p>
+                <p><strong>Zonas Horarias: </strong> ...</p>
+                <p><strong>Coordenadas:</strong> Latitud ..., Longitud ...</p>
+                <p><strong>Símbolo de la Moneda:</strong> ...</p>
+            </div>
+        </div>
+    
+        <script>
+            hamburger = document.querySelector(".hamburger");
+                hamburger.onclick = function(){
+                    navBar =document.querySelector(".nav-bar");
+                    navBar.classList.toggle("active");
+                } 
+                const btnSwitch = document.querySelector('#switch');
+            btnSwitch.addEventListener('click',() => {
+                document.body.classList.toggle('dark');
+                btnSwitch.classList.toggle('active');
+            });
+        </script>
+    <script src="paises_buscador.js"></script>
+</body>
+</html>
