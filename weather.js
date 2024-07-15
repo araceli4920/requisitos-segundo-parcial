@@ -1,42 +1,42 @@
 let cityInput = document.getElementById('city_input'),
-searchBtn = document.getElementById('searchBtn'),
-locationBtn = document.getElementById('locationBtn'),
-api_key = '70df831975a7b2014b2c3937384bc5e0',
-currentWeatherCard = document.querySelectorAll('.weather-left .card')[0],
-fiveDaysForecastCard = document.querySelector('.day-forecast'),
-sunriseCard = document.querySelectorAll(`.rightcard .card`)[0],
-humidityVal = document.getElementById(`humidityVal`),
-pressureVal = document.getElementById(`pressureVal`),
-visibilityVal = document.getElementById(`visibilityVal`),
-windSpeedVal = document.getElementById(`windSpeedVal`),
-feelsVal = document.getElementById(`feelsVal`);
+    searchBtn = document.getElementById('searchBtn'),
+    locationBtn = document.getElementById('locationBtn'),
+    api_key = '70df831975a7b2014b2c3937384bc5e0',
+    currentWeatherCard = document.querySelectorAll('.weather-left .card')[0],
+    fiveDaysForecastCard = document.querySelector('.day-forecast'),
+    sunriseCard = document.querySelectorAll('.rightcard .card')[0],
+    humidityVal = document.getElementById('humidityVal'),
+    pressureVal = document.getElementById('pressureVal'),
+    visibilityVal = document.getElementById('visibilityVal'),
+    windSpeedVal = document.getElementById('windSpeedVal'),
+    feelsVal = document.getElementById('feelsVal');
 
-function getWeatherDetails(name, lat, lon, country, state){
+function getWeatherDetails(name, lat, lon, country, state) {
     let FORECAST_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}`,
-    WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`,
-    days = [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-    ],
-    months = [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-    ];
+        WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`,
+        days = [
+            'Sunday',
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday'
+        ],
+        months = [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+        ];
 
     fetch(WEATHER_API_URL).then(res => res.json()).then(data => {
         let date = new Date();
@@ -54,15 +54,16 @@ function getWeatherDetails(name, lat, lon, country, state){
             <hr>
             <div class="card-footer">
                 <p><i class="fa-regular fa-calendar"></i> ${days[date.getDay()]}, ${date.getDate()}, ${months[date.getMonth()]} ${date.getFullYear()}</p>
-                <p><i class="fa-regular fa-location-dot"></i> ${name}, ${country}</p>
+                <p><i class="fa-regular fa-location-dot"></i> ${name}, <a id="country-link" href="#"> ${country}</a></p>
             </div>
         `;
-        let {sunrise, sunset} = data.sys,
-        {timezone, visibility} = data,
-        {humidity, pressure, feels_like} = data.main,
-        {speed} = data.wind,
-        sRiseTime = moment.utc(sunrise, `X`).add(timezone, `seconds`).format(`hh:mm A`)
-        sSetTime = moment.utc(sunset, `X`).add(timezone, `seconds`).format(`hh:mm A`)
+        document.getElementById('country-link').setAttribute('href', `individual.html?country=${country}`);
+        let { sunrise, sunset } = data.sys,
+            { timezone, visibility } = data,
+            { humidity, pressure, feels_like } = data.main,
+            { speed } = data.wind,
+            sRiseTime = moment.utc(sunrise, 'X').add(timezone, 'seconds').format('hh:mm A'),
+            sSetTime = moment.utc(sunset, 'X').add(timezone, 'seconds').format('hh:mm A');
         sunriseCard.innerHTML = `
             <div class="card-head">
                 <h2 class="todayshighlights">Today's Highlights</h2>
@@ -95,20 +96,20 @@ function getWeatherDetails(name, lat, lon, country, state){
         windSpeedVal.innerHTML = `${speed}m/s`;
         feelsVal.innerHTML = `${(feels_like - 273.15).toFixed(2)}&deg;C`;
     }).catch(() => {
-        alert('Failed to fetch current weather');  
+        alert('Failed to fetch current weather');
     });
 
     fetch(FORECAST_API_URL).then(res => res.json()).then(data => {
         let uniqueForecastDays = [];
         let fiveDaysForecast = data.list.filter(forecast => {
             let forecastDate = new Date(forecast.dt_txt).getDate();
-            if (!uniqueForecastDays.includes(forecastDate)){
+            if (!uniqueForecastDays.includes(forecastDate)) {
                 return uniqueForecastDays.push(forecastDate);
             }
         });
         fiveDaysForecastCard.innerHTML = '';
         daysLength.innerHTML = fiveDaysForecast.length;
-        for(let i = 0; i < fiveDaysForecast.length; i++){
+        for (let i = 0; i < fiveDaysForecast.length; i++) {
             let date = new Date(fiveDaysForecast[i].dt_txt);
             fiveDaysForecastCard.innerHTML += `
                 <div class="forecast-item"> 
@@ -122,46 +123,52 @@ function getWeatherDetails(name, lat, lon, country, state){
             `;
         }
     }).catch(() => {
-        alert('Failed to fetch weather forecast');  
+        alert('Failed to fetch weather forecast');
     });
 }
 
-function getCityCoordinates(){
-    let cityName = cityInput.value.trim();
-    cityInput.value='';
-    if(!cityName) return;
+function getCityCoordinates(cityName) {
+    if (!cityName) return;
     let GEOCODING_API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${api_key}`;
     fetch(GEOCODING_API_URL).then(res => res.json()).then(data => {
-        if(data.length === 0) {
+        if (data.length === 0) {
             alert(`No coordinates found for ${cityName}`);
             return;
         }
-        let {name, lat, lon, country, state} = data[0];
+        let { name, lat, lon, country, state } = data[0];
         getWeatherDetails(name, lat, lon, country, state);
     }).catch(() => {
         alert(`Failed to fetch coordinates of ${cityName}`);
     });
 }
 
-function getUserCoordinates(){
-    navigator.geolocation.getCurrentPosition(position =>{
-        let {latitude, longitude} = position.coords;
+function getUserCoordinates() {
+    navigator.geolocation.getCurrentPosition(position => {
+        let { latitude, longitude } = position.coords;
         let REVERSE_GEOCODING_URL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${api_key}`;
 
-        fetch(REVERSE_GEOCODING_URL).then(res => res.json()).then(data =>{
-            let {name, country, state} = data[0];
+        fetch(REVERSE_GEOCODING_URL).then(res => res.json()).then(data => {
+            let { name, country, state } = data[0];
             getWeatherDetails(name, latitude, longitude, country, state);
-        }).catch(() =>{
-            alert(`Failed to fetch user coordinates`);
-        })
-    }, error =>{
-        if(error.code === error.PERMISSION_DENIED){
-            alert(`Geolocation permission denied. Please reset location permission to grant access again`);
+        }).catch(() => {
+            alert('Failed to fetch user coordinates');
+        });
+    }, error => {
+        if (error.code === error.PERMISSION_DENIED) {
+            alert('Geolocation permission denied. Please reset location permission to grant access again');
         }
-    })
+    });
 }
 
-searchBtn.addEventListener('click', getCityCoordinates);
-locationBtn.addEventListener(`click`, getUserCoordinates);
-cityInput.addEventListener(`keyup`, e => e.key === `Enter` && getCityCoordinates());
-window.addEventListener(`load`, getUserCoordinates); 
+const urlParams = new URLSearchParams(window.location.search);
+const stateParam = urlParams.get('state');
+const capitalParam = urlParams.get('capital');
+
+if (stateParam && capitalParam) {
+    getCityCoordinates(capitalParam);
+} else {
+    searchBtn.addEventListener('click', () => getCityCoordinates(cityInput.value));
+    locationBtn.addEventListener('click', getUserCoordinates);
+    cityInput.addEventListener('keyup', e => e.key === 'Enter' && getCityCoordinates(cityInput.value));
+    window.addEventListener('load', getUserCoordinates);
+}
