@@ -57,7 +57,7 @@ function getWeatherDetails(name, lat, lon, country, state) {
                 <p><i class="fa-regular fa-location-dot"></i> ${name}, <a id="country-link" href="#"> ${country}</a></p>
             </div>
         `;
-        document.getElementById('country-link').setAttribute('href', `individual.html?country=${country}`);
+        document.getElementById('country-link').setAttribute('href', `paises_individual.html?country=${country}`);
         let { sunrise, sunset } = data.sys,
             { timezone, visibility } = data,
             { humidity, pressure, feels_like } = data.main,
