@@ -178,8 +178,14 @@ body.dark header {
 body.dark .nav-bar ul li a  {
     color: #dcdbdb;
 }
+body.dark .underline {
+    color: #fcfafa;
+}
 body.dark .logo {
     color: #f9f9eb;
+}
+body.dark .label{
+    color: #fcfafa;
 }
 body.dark hr {
     background-color: rgb(32, 30, 39);
@@ -250,15 +256,16 @@ body.dark .nav-bar.active {
 .input:valid~.label{
     top: -25px;
     font-size: 13px;
-    color: #ffffff;
+    color: #141313;
 }
+
 .underline{
     position: absolute;
     bottom: 0;
     left: 0;
     height: 2px;
     width: 100%;
-    background-color: #fdfdfb;
+    background-color: #141313;
     transform: scaleX(0);
     transition: all 0.3s ease;
 }
