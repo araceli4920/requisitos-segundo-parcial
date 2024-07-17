@@ -18,7 +18,13 @@ searchButton.addEventListener("click", () => {
             <img src="${country.flags.png}" alt="Bandera de ${country.name.common}">
             <div class="contenedor">
             <p><strong>Otros nombres:</strong> ${country.altSpellings}</p>
-            <p class="weater"><strong>Capital:</strong> ${country.capital ? `<a href="weather.html?state=${country.name.common}&capital=${country.capital[0]}">${country.capital[0]}</a>` : 'N/A'} (Para mas información favor de entrar al link)</p>
+            <p class="weater">
+            <strong>Capital:</strong> 
+            ${country.capital && country.capital.length > 0 ? 
+                `<a href="weather.html?state=${encodeURIComponent(country.name.common)}&capital=${encodeURIComponent(country.capital[0])}">${country.capital[0]}</a>` : 
+                'N/A'} 
+            (Para más información favor de entrar al link)
+            </p>
             <p><strong>Continentes:</strong> ${country.continents}</p>
             </div>
             <div class="contenedor1">
