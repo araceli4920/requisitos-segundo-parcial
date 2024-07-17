@@ -16,7 +16,7 @@ body {
 }
 hr{
     width: 100%;
-    background-color: rgb(240, 246, 225);
+    background-color: rgb(233, 234, 234);
     height: 5px;
     box-shadow: 0 4px 10px rgba(240, 246, 225, 0.4);
     border: none; 
