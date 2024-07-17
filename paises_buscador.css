@@ -21,7 +21,7 @@ body {
 }
 hr{
     width: 100%;
-    background-color: rgb(240, 246, 225);
+    background-color: rgb(233, 234, 234);
     height: 5px;
     box-shadow: 0 4px 10px rgba(240, 246, 225, 0.4);
     border: none; 
@@ -296,14 +296,10 @@ input:focus~.underline,
 
 
 .card{  /*Card individual*/
-    width: 100%;
     display: flex;
-    height: 100%;
     justify-content: space-around;
     hyphens: auto;
     overflow-wrap: break-word;
-    hyphens: auto;
-    margin-bottom: -30px;
 }
 
 .contenedor{
@@ -318,7 +314,8 @@ input:focus~.underline,
 }
 
 .card img{
-    width: 433px;
+    width: 400px;
+    height: 300px;
     margin-right: 100px;
     box-shadow: 1px 2px 7px rgba(0, 0, 0, 0.927);
 
@@ -358,7 +355,6 @@ input:focus~.underline,
 }
 
 .boton   {
-    padding: 0 120px;
     display: flex;
     gap: 50px;
     justify-content: flex-end;
@@ -381,6 +377,6 @@ p{
 
 h1{
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
     margin-bottom: 66px;
 }

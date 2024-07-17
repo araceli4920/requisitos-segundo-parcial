@@ -47,7 +47,7 @@ body.dark .nav-bar.active {
 }
 hr{
     width: 100%;
-    background-color: rgb(240, 246, 225);
+    background-color: rgb(233, 234, 234);
     height: 5px;
     box-shadow: 0 4px 10px rgba(240, 246, 225, 0.4);
     border: none;  
@@ -192,24 +192,25 @@ header {
 .card{
     display: flex;
     justify-content: space-around;
-    margin-bottom: -30px;
+    hyphens: auto;
+    overflow-wrap: break-word;
 }
 
 .contenedor{
-    width: 250px;
+    width: 350px;
     height: 200px;
 }
 
 .contenedor1{
-    width: 250px;
+    width: 350px;
     height: 200px;
     
-}
+}   
 
 .card img{
     width: 400px;
     height: 300px;
-    margin-left: 25px;
+    margin-left: 80px;
     box-shadow: 1px 2px 7px rgba(0, 0, 0, 0.927);
 
 }
