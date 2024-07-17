@@ -109,3 +109,52 @@ button {
     font-size: 1em;
     margin-top: 5px;
 }
+
+@media (max-width: 992px) {
+    header{
+        margin-bottom: -150px;
+    }
+
+    .contenedor{
+        width: 100%;
+        margin: auto;
+    }
+
+    h2{
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header{
+        margin-bottom: -130px;
+    }
+
+    .contenedor{
+        width: 100%;
+        margin: auto;
+    }
+
+    h2{
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    header{
+        margin-bottom: -65px;
+    }
+
+    .contenedor{
+        width: 100%;
+        margin: auto;
+    }
+    
+    h2{
+        margin-bottom: 20px;
+    }
+
+    .informacion{
+        flex-direction: column;
+    }
+}
