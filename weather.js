@@ -11,7 +11,19 @@ let cityInput = document.getElementById('city_input'),
     windSpeedVal = document.getElementById('windSpeedVal'),
     feelsVal = document.getElementById('feelsVal');
 
+function clearWeatherDetails() {
+    currentWeatherCard.innerHTML = '';
+    fiveDaysForecastCard.innerHTML = '';
+    sunriseCard.innerHTML = '';
+    humidityVal.innerHTML = '';
+    pressureVal.innerHTML = '';
+    visibilityVal.innerHTML = '';
+    windSpeedVal.innerHTML = '';
+    feelsVal.innerHTML = '';
+}
+
 function getWeatherDetails(name, lat, lon, country, state) {
+    clearWeatherDetails();
     let FORECAST_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}`,
         WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`,
         days = [
@@ -108,7 +120,6 @@ function getWeatherDetails(name, lat, lon, country, state) {
             }
         });
         fiveDaysForecastCard.innerHTML = '';
-        daysLength.innerHTML = fiveDaysForecast.length;
         for (let i = 0; i < fiveDaysForecast.length; i++) {
             let date = new Date(fiveDaysForecast[i].dt_txt);
             fiveDaysForecastCard.innerHTML += `
@@ -137,6 +148,7 @@ function getCityCoordinates(cityName) {
         }
         let { name, lat, lon, country, state } = data[0];
         getWeatherDetails(name, lat, lon, country, state);
+        cityInput.value = ''; // Limpia el campo de entrada después de la búsqueda
     }).catch(() => {
         alert(`Failed to fetch coordinates of ${cityName}`);
     });
@@ -145,14 +157,7 @@ function getCityCoordinates(cityName) {
 function getUserCoordinates() {
     navigator.geolocation.getCurrentPosition(position => {
         let { latitude, longitude } = position.coords;
-        let REVERSE_GEOCODING_URL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${api_key}`;
-
-        fetch(REVERSE_GEOCODING_URL).then(res => res.json()).then(data => {
-            let { name, country, state } = data[0];
-            getWeatherDetails(name, latitude, longitude, country, state);
-        }).catch(() => {
-            alert('Failed to fetch user coordinates');
-        });
+        getReverseGeocoding(latitude, longitude);
     }, error => {
         if (error.code === error.PERMISSION_DENIED) {
             alert('Geolocation permission denied. Please reset location permission to grant access again');
@@ -160,15 +165,73 @@ function getUserCoordinates() {
     });
 }
 
+function getCoordinatesFromInput(input) {
+    const coordinates = input.split(',').map(coord => coord.trim());
+    if (coordinates.length !== 2 || isNaN(coordinates[0]) || isNaN(coordinates[1])) {
+        alert('Invalid coordinates format. Please enter in "latitude, longitude" format.');
+        return;
+    }
+    const [lat, lon] = coordinates;
+    getReverseGeocoding(lat, lon);
+    cityInput.value = ''; // Limpia el campo de entrada después de la búsqueda
+}
+
+function getReverseGeocoding(lat, lon) {
+    let REVERSE_GEOCODING_URL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${api_key}`;
+    fetch(REVERSE_GEOCODING_URL).then(res => res.json()).then(data => {
+        if (data.length === 0) {
+            alert(`No data found for coordinates (${lat}, ${lon})`);
+            return;
+        }
+        let bestMatch = data.find(location => location.name && location.country) || data[0];
+        let { name, country, state } = bestMatch;
+        getWeatherDetails(name || 'Unknown', lat, lon, country || 'Unknown', state || 'Unknown');
+    }).catch(() => {
+        alert(`Failed to fetch location data for coordinates (${lat}, ${lon})`);
+    });
+}
+
 const urlParams = new URLSearchParams(window.location.search);
 const stateParam = urlParams.get('state');
 const capitalParam = urlParams.get('capital');
+const latParam = urlParams.get('lat');
+const lonParam = urlParams.get('lon');
+const countryParam = urlParams.get('country');
 
-if (stateParam && capitalParam) {
+if (latParam && lonParam) {
+    getReverseGeocoding(latParam, lonParam);
+} else if (countryParam) {
+    document.getElementById('city_input').value = countryParam;
+    getCityCoordinates(countryParam);
+} else if (stateParam && capitalParam) {
     getCityCoordinates(capitalParam);
 } else {
-    searchBtn.addEventListener('click', () => getCityCoordinates(cityInput.value));
+    searchBtn.removeEventListener('click', handleSearch);  // Remove existing listener if any
+    searchBtn.addEventListener('click', handleSearch);
+    locationBtn.removeEventListener('click', getUserCoordinates);  // Remove existing listener if any
     locationBtn.addEventListener('click', getUserCoordinates);
-    cityInput.addEventListener('keyup', e => e.key === 'Enter' && getCityCoordinates(cityInput.value));
+    cityInput.removeEventListener('keyup', handleKeyUp);  // Remove existing listener if any
+    cityInput.addEventListener('keyup', handleKeyUp);
+    window.removeEventListener('load', getUserCoordinates);  // Remove existing listener if any
     window.addEventListener('load', getUserCoordinates);
+}
+
+function handleSearch() {
+    const input = cityInput.value;
+    if (input.includes(',')) {
+        getCoordinatesFromInput(input);
+    } else {
+        getCityCoordinates(input);
+    }
+}
+
+function handleKeyUp(e) {
+    if (e.key === 'Enter') {
+        const input = cityInput.value;
+        if (input.includes(',')) {
+            getCoordinatesFromInput(input);
+        } else {
+            getCityCoordinates(input);
+        }
+    }
 }
