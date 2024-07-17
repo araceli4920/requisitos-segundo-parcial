@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ramdomuser.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Random User Generator</title>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="index.html" class="sidebar-item">
+            <i class="fas fa-images"></i> <p>Home</p>
+        </a>
+        <a href="paises.html" class="sidebar-item">
+            <i class="fas fa-book"></i> <p>Paises</p>
+        </a>
+        <a href="weather.html" class="sidebar-item">
+            <i class="fas fa-file-alt"></i> <p>Weather</p>
+        </a>
+    </div>
+    <header>
+        <h1>
+            RANDOM USER GENERATOR
+        </h1>
+    </header>
+    <div class="contenedor">
+        <img src="" alt="perfil de usuario" id="foto">
+        <h2><i class="fas fa-user"></i> Nombre: <span id="nombre"></span></h2>
+        <div class="informacion">
+            <div class="columna">
+                <p><i class="fas fa-globe"></i> Coordenadas: <a href="#" id="coordenadasLink"><span id="coordenadas"></span></a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Ubicación: <a href="#" id="ubicacionLink"><span id="ubicacion"></span></a></p>
+                <p><i class="fas fa-clock"></i> Zona Horaria: <a href="#" id="zonaHorariaLink"><span id="zona-horaria"></span></a></p>
+                <p><i class="fas fa-city"></i> Ciudad: <a href="#" id="ciudadLink"><span id="ciudad"></span></a></p> 
+            </div>
+            <div class="columna">
+                <p><i class="fas fa-envelope"></i> Correo: <span id="correo"></span></p>
+                <p><i class="fas fa-language"></i> Idiomas: <a href="#" id="idiomasLink"><span id="idiomas"></span></a></p>
+                <p><i class="fas fa-map"></i> Continente: <a href="#" id="continenteLink"><span id="continente"></span></a></p>
+                <p><i class="fas fa-flag"></i> Nacionalidad: <a href="#" id="nacionalidadLink"><span id="nacionalidad"></span></a></p>
+            </div>
+        </div>
+        <div class="boton">
+            <button id="boton">Generar usuario</button>
+        </div>
+        <script src="ramdomuser.js"></script>
+    </div>
+</body>
+</html>
