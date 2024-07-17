@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300&family=Epilogue:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@700&display=swap');
+
+* {
+    font-family: "Roboto", sans-serif;
+    /* margin: 0;
+    padding: 0;
+    text-decoration: none; */
+}
+
+body {
+    background-image: url(ibackground.jpg);
+}
+
+#OW-API {
+    background: rgb(88,217,116);
+    background: linear-gradient(0deg, rgba(88,217,116,1) 2%, rgba(34,193,195,1) 46%, rgba(183,245,241,1) 78%);
+}
+
+#RC-API {
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+
+#RUG-API {
+    background: rgb(255,0,235);
+    background: radial-gradient(circle, rgba(255,0,235,1) 0%, rgba(173,201,240,1) 50%, rgba(100,201,223,1) 100%);
+}
+
+#container {
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr); esta función genera conflicto al momento de agregar columnas responsivas */ 
+    /* gap: 20px; */
+    /* padding: 20px 25px 21px 25px; */
+}
+
+.card {
+    margin-bottom: 50px;
+    background: #000000;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px #ffffff;
+    color: #000;
+}
+
+h1{
+    text-align: center;
+}
+
+.card p{
+    text-align: justify;
+}
+
+#container a {
+    color: #000;
+}
+
+#container a:hover {
+    color: rgb(0, 0, 176);
+}
+
+.card img {
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 2px 0px 6px #ccc;
+}
+
+.card-detail {
+    padding: 15px;
+    color: #000;
+}
+
+#body-text {
+    color: aliceblue;
+    margin-bottom: 40px;
+}
+
+a:link{
+    text-decoration: none;
+}

@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+body {
+    font-family: "Nunito Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fffffecc;/*Se le hizo el cambio de color a blaco pero con otrasnfunciones cambiara a oscuro*/
+    transition: .3s ease all;/*Esto ayuda aque la transicion sea suave*/ 
+}
+*{
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+}
+hr{
+    width: 100%;
+    background-color: rgb(240, 246, 225);
+    height: 5px;
+    box-shadow: 0 4px 10px rgba(240, 246, 225, 0.4);
+    border: none; 
+}
+header {
+    width: 100%;
+    height: 100%;
+    background: #fffffecc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
+}
+.logo{
+    font-size: 21px;
+    font-weight: bold;
+    color: #060606;
+}
+.hamburger {
+    display: none;
+}
+.nav-bar ul {
+    display: flex;
+}
+.nav-bar ul li a {
+    display: block;
+    color: #060606;
+    font-size:  15px ;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: 0.2s;
+    margin: 0 5px;
+}
+.nav-bar ul li a:hover{
+    color: #dcdbdb;
+    background: #060606;
+}
+.nav-bar ul li a:active{
+    color: #dcdbdb;
+    background: #060606;
+}
+
+@media only screen and (max-width: 1320px) {
+    header {
+    padding: 0 50px;
+    }
+} 
+@media only screen and (max-width: 1100px) {
+    header {
+        padding: 0 30px;
+        }
+    } 
+@media only screen and (max-width: 900px) {
+    .hamburger {
+        display: block;
+        cursor: pointer; 
+    }
+    .hamburger .line {
+        width: 30px;
+        height: 3px;
+        background: #060606;
+        margin: 6px 0;
+    }
+    
+    
+    .nav-bar{
+        height: 0px;
+        position: absolute;
+        top: 33px;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        background-color:white;
+        transition: 0.2s;
+        overflow: hidden;
+    }
+
+
+    .nav-bar.active {
+        height: 288px;
+        margin-top: 13px;
+    }
+
+    .nav-bar ul{
+        display: block;
+        width: fit-content;
+        margin: 80px auto 0 auto;
+        text-align: center;
+        transition: 0.5s;
+        opacity: 0;
+    }
+
+    .nav-bar.active ul {
+        opacity: 1;
+    }
+    .nav-bar ul li a{
+        margin-bottom: 12px;
+        color: rgb(9, 9, 9);
+    }
+}
+
+#Container {/*De aqui en adelante son los estilos de la pagina pasises la principal*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 60px;
+}
+.country {
+    background-color: #fffffecc;
+    border-radius: 3px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 26px;
+    padding: 0px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+.country:hover{
+    transform: scale(1.05); /* Agranda la tarjeta al pasar el cursor */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Añade más sombra al pasar el cursor */
+}
+
+.country img {
+    width: 100%;
+    width: 300px; /* Ancho fijo */
+    height: 150px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.card{
+    padding: 10px 26px;
+
+}
+.card p {
+    text-align: left;
+    word-spacing: 2px; /* Espacio adicional entre palabras */
+}
+.card strong  {
+    color: #3b3b3b;
+    font-size: 15px;
+    
+}
+.country p {
+    font-size: 15px; 
+    color: #6f6e6e;
+}
+.country h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #0e0e0d;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.country h2:hover{
+    transform: scale(1.05);
+    color: #913304;
+}
+
+.switch { /*Apartir de aqui es el cambio de color*/
+    background: #343058;
+    border-radius: 1000px;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+    margin-left: 20px;
+    padding: 5px;
+    &::after{
+        content: "";
+        display: block;
+        height: 40px;
+        width: 41px;
+        position: absolute;
+        background: #fffbfb;
+        top: 0;
+        left: 0;
+        right: unset;
+        border-radius: 100px;
+        transition: .3s ease all;
+        box-shadow: 0px 0px 2px 2px rgb(0, 0,0,.2);
+    }
+    &.active {
+        background: rgb(189, 127, 13);
+        color: #000;
+        &::after {
+            right: 0;
+            left: unset;
+        }
+    }
+    span {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        display: block;
+        background: none;
+        color:#fff;
+    }
+}
+
+    body.dark { /*Apartir de aqui se agrega la funcionalidad del botonn "switch" para el cambio de color*/
+        background:#272B33;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    body.dark header {
+        background:#272B33 ;
+        color: #fffffecc ;
+    }
+    
+    body.dark .nav-bar ul li a  {
+        color: #dcdbdb;
+    }
+    body.dark .logo {
+        color: #f9f9eb;
+    }
+    body.dark hr {
+        background-color: rgb(32, 30, 39);
+        box-shadow: 0 4px 10px rgba(20, 14, 35, 0.4);
+        transition: .3s ease all;
+    }
+    body.dark .country {
+        background:  #272B33;
+        box-shadow: 0 0px 9px  rgba(20, 14, 35, 0.4);
+        transition: .3s ease all;
+        
+    }
+    body.dark .country h2 {
+        color:  #e6e8ed;
+        
+    }
+    body.dark .card strong {
+        color:  #e5e6e9;
+        
+    }
+    body.dark .card p {
+        color:  #c9cede;
+        
+    }
+    body.dark .nav-bar.active {
+        background: #272B33;
+    }

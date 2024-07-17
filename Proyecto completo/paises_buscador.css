@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+body {
+    font-family: "Nunito Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fffffecc;
+    transition: .3s ease all;
+}
+.hidden {
+    display: none;/*JAMAS QUITAR ESTE, sirve para ocultar el boton de buscar al mostrar el resultado*/
+} 
+
+*{
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+}
+hr{
+    width: 100%;
+    background-color: rgb(240, 246, 225);
+    height: 5px;
+    box-shadow: 0 4px 10px rgba(240, 246, 225, 0.4);
+    border: none; 
+}
+header {
+    width: 100%;
+    height: 100%;
+    background: #fffffecc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
+}
+.logo{
+    font-size: 21px;
+    font-weight: bold;
+    color: #060606;
+}
+.hamburger {
+    display: none;
+}
+.nav-bar ul {
+    display: flex;
+}
+.nav-bar ul li a {
+    display: block;
+    color: #060606;
+    font-size:  15px ;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: 0.2s;
+    margin: 0 5px;
+}
+.nav-bar ul li a:hover{
+    color: #dcdbdb;
+    background: #060606;
+}
+.nav-bar ul li a:active{
+    color: #dcdbdb;
+    background: #060606;
+}
+
+@media only screen and (max-width: 1320px) {
+    header {
+    padding: 0 50px;
+    }
+} 
+@media only screen and (max-width: 1100px) {
+    header {
+        padding: 0 30px;
+        }
+    } 
+@media only screen and (max-width: 900px) {
+    .hamburger {
+        display: block;
+        cursor: pointer; 
+    }
+    .hamburger .line {
+        width: 30px;
+        height: 3px;
+        background: #060606;
+        margin: 6px 0;
+    }
+    
+    
+    .nav-bar{
+        height: 0px;
+        position: absolute;
+        top: 33px;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        background-color:white;
+        transition: 0.2s;
+        overflow: hidden;
+    }
+
+
+    .nav-bar.active {
+        height: 288px;
+        margin-top: 13px;
+    }
+
+    .nav-bar ul{
+        display: block;
+        width: fit-content;
+        margin: 80px auto 0 auto;
+        text-align: center;
+        transition: 0.5s;
+        opacity: 0;
+    }
+
+    .nav-bar.active ul {
+        opacity: 1;
+    }
+    .nav-bar ul li a{
+        margin-bottom: 12px;
+        color: rgb(9, 9, 9);
+    }
+}
+
+.switch { /*Apartir de aqui es el cambio de color*/
+    background: #343058;
+    border-radius: 1000px;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+    margin-left: 20px;
+    padding: 5px;
+    &::after{
+        content: "";
+        display: block;
+        height: 40px;
+        width: 41px;
+        position: absolute;
+        background: #fffbfb;
+        top: 0;
+        left: 0;
+        right: unset;
+        border-radius: 100px;
+        transition: .3s ease all;
+        box-shadow: 0px 0px 2px 2px rgb(0, 0,0,.2);
+    }
+    &.active {
+        background: rgb(189, 127, 13);
+        color: #000;
+        &::after {
+            right: 0;
+            left: unset;
+        }
+    }
+    span {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        display: block;
+        background: none;
+        color:#fff;
+    }
+}
+body.dark h1 {
+    color: #fffffecc;
+}
+body.dark { /*Apartir de aqui se agrega la funcionalidad del botonn "switch" para el cambio de color*/
+    background:#272B33;
+}
+body.dark header {
+    background:#272B33 ;
+    color: #fffffecc ;
+}
+
+body.dark .nav-bar ul li a  {
+    color: #dcdbdb;
+}
+body.dark .underline {
+    color: #fcfafa;
+}
+body.dark .logo {
+    color: #f9f9eb;
+}
+body.dark .label{
+    color: #fcfafa;
+}
+body.dark hr {
+    background-color: rgb(32, 30, 39);
+    box-shadow: 0 4px 10px rgba(20, 14, 35, 0.4);
+    transition: .3s ease all;
+}
+body.dark .country {
+    background:  #272B33;
+    box-shadow: 0 0px 9px  rgba(20, 14, 35, 0.4);
+    transition: .3s ease all;
+    
+}
+body.dark .country h2 {
+    color:  #e6e8ed;
+    
+}
+body.dark .card strong {
+    color:  #e5e6e9;
+    
+}
+body.dark .card p {
+    color:  #c9cede;
+    
+}
+body.dark .nav-bar.active {
+    background: #272B33;
+}
+
+#card {
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.927);
+    padding: 20px;
+    width: 400px;
+    border-radius: 8px;
+    margin-top: 120px;
+}
+
+.tit{
+    text-align: center;
+    
+}
+
+#app{
+    position: relative;
+    margin: 50px auto ;
+    width: 200px;
+    
+}
+#app .input{
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 5px 0;
+    background-color: transparent;
+    outline: none;
+    width: 100%;
+} 
+.label{
+    position: absolute;
+    top:0;
+    left: 0;
+    color: #ccc;
+    transition: all 0.3s ease;
+    pointer-events: none;
+
+}
+.input:focus~.label,
+.input:valid~.label{
+    top: -25px;
+    font-size: 13px;
+    color: #141313;
+}
+
+.underline{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #141313;
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+}
+input:focus~.underline,
+.input:valid~.underline{
+    transform: scaleX(1);
+}
+
+#searchButton{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: white;
+    background-color: #4d4f52;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#searchButton:hover {
+    background-color: #1e242a;
+}
+.bot{
+    text-align: center;
+}
+
+
+.card{  /*Card individual*/
+    width: 100%;
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    margin-bottom: -30px;
+}
+
+.contenedor{
+    width: 350px;
+    height: 200px;
+}
+
+.contenedor1{
+    width: 350px;
+    height: 200px;
+    
+}
+
+.card img{
+    width: 433px;
+    margin-right: 100px;
+    box-shadow: 1px 2px 7px rgba(0, 0, 0, 0.927);
+
+}
+
+.button{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #333940;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.button:hover {
+    background-color: #1e242a;
+}
+.butto{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #333940;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.butto:hover {
+    background-color: #1e242a;
+}
+
+.boton   {
+    padding: 0 120px;
+    display: flex;
+    gap: 50px;
+    justify-content: flex-end;
+    
+}
+.boton  a {
+    text-decoration: none;
+    font-size: 15px;
+    
+}
+
+strong {
+    color: #3b3b3b;
+    font-size: 17px;
+}
+p{
+    font-size: 17px; 
+    color: #6f6e6e;
+}
+
+h1{
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 66px;
+}
